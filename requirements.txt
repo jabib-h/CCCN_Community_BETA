@@ -1,0 +1,15 @@
+# CCCN Hub — dependencias (rangos de intención; congelar con pip freeze > requirements-lock.txt)
+fastapi>=0.115
+uvicorn[standard]>=0.30
+SQLAlchemy>=2.0
+psycopg[binary]>=3.1        # Postgres (Azure Flexible Server); dev/tests usan SQLite stdlib
+PyJWT>=2.8
+argon2-cffi>=23.1
+Authlib>=1.3                # OAuth Google/Microsoft (OIDC)
+httpx>=0.27                 # requerido por Authlib y TestClient
+itsdangerous>=2.1           # SessionMiddleware (estado OAuth)
+email-validator>=2.0        # pydantic EmailStr
+
+# Al absorber Badges (docs/MIGRACION_BADGES.md) agregar:
+#   cryptography>=42         firma Ed25519 de assertions
+#   python-multipart>=0.0.9  upload CSV de emisión masiva

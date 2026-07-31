@@ -1,0 +1,22 @@
+# Datos, estado y secretos — NUNCA versionar
+data/
+*.db
+*.sqlite*
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Salidas y temporales
+outputs/
+backups/
+*.log
+.DS_Store
+Thumbs.db

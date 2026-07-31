@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mi Hub | CCCN</title>
+<link rel="stylesheet" href="/app/shared/ds/styles.css"/>
+<link rel="stylesheet" href="/app/shared/app.css"/>
+<link rel="stylesheet" href="/app/shared/hub.css"/>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container site-header__bar">
+    <a class="site-header__logo" href="/app/hub.html"><img src="/app/shared/img/logo.png" alt="CCCN"/></a>
+    <nav class="site-header__nav">
+      <a class="is-active" href="/app/hub.html">Mi Hub</a>
+      <a href="/app/legal/privacidad.html">Privacidad</a>
+    </nav>
+    <div class="site-header__cta">
+      <span class="pill pill-outline" id="quien">…</span>
+      <button class="btn btn-ghost" type="button" id="salir">Salir</button>
+    </div>
+  </div>
+</header>
+
+<main class="container section-tight stack-lg">
+
+  <div class="stack-sm">
+    <span class="h-eyebrow">Mi Hub</span>
+    <h1 class="h-1" id="saludo">Hola</h1>
+  </div>
+
+  <section aria-labelledby="t-avisos" class="stack-sm" id="avisos" hidden>
+    <h2 class="h-3" id="t-avisos">Pendientes</h2>
+    <ul class="avisos" id="avisos-lista"></ul>
+  </section>
+
+  <section aria-labelledby="t-modulos" class="stack">
+    <h2 class="h-3" id="t-modulos">Servicios</h2>
+    <div class="grid-3 mods" id="modulos">
+      <p class="muted">Cargando…</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-membresias" class="stack-sm">
+    <h2 class="h-3" id="t-membresias">Mis membresías</h2>
+    <div id="membresias"></div>
+  </section>
+
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="/app/shared/api.js"></script>
+<script src="/app/shared/ui.js"></script>
+<script src="/app/hub.js"></script>
+</body>
+</html>

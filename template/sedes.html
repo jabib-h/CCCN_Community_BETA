@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Sedes | CCCN</title>
+<link rel="icon" type="image/svg+xml" href="assets/logo-mark.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600;1,9..144,700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+<style>
+.sedes-hero {
+  padding: clamp(60px, 9vw, 100px) 0 clamp(40px, 5vw, 64px);
+  background: linear-gradient(180deg, var(--cream) 0%, #fff 100%);
+}
+
+.sede-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+}
+@media (max-width: 980px) { .sede-grid { grid-template-columns: 1fr; } }
+
+.sede {
+  background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg);
+  overflow: hidden;
+  display: grid; grid-template-rows: auto 1fr;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.sede:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--line-strong); }
+
+.sede__media {
+  aspect-ratio: 16/9;
+  background-size: cover; background-position: center;
+  position: relative;
+}
+.sede__media::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,26,77,.6), transparent 50%);
+}
+.sede__badge {
+  position: absolute; top: 16px; left: 16px; z-index: 2;
+  display: inline-flex; gap: 6px; align-items: center;
+  background: rgba(255,255,255,.92); color: var(--cccn-blue-900);
+  padding: 6px 12px; border-radius: 999px; font-size: 12px; font-weight: 600;
+  backdrop-filter: blur(6px);
+}
+.sede__name-on-media {
+  position: absolute; left: 24px; bottom: 20px; z-index: 2;
+  color: #fff; font-family: var(--font-sans); font-size: 32px; font-weight: 500;
+  letter-spacing: -.01em;
+}
+
+.sede__body { padding: 24px; display: grid; gap: 16px; }
+.sede__addr { color: var(--muted); font-size: 14px; line-height: 1.5; }
+.sede__meta { display: flex; flex-wrap: wrap; gap: 8px; }
+.sede__svc { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 14px; font-size: 13px; color: var(--ink-2); }
+.sede__svc span { display: flex; gap: 6px; align-items: center; }
+.sede__svc svg { color: #1F8A5B; flex-shrink: 0; }
+
+.sede__hours { background: var(--tint); border-radius: 10px; padding: 14px; font-size: 13px; color: var(--ink-2); display: grid; gap: 4px; }
+.sede__hours strong { color: var(--cccn-blue-900); }
+
+.sede__actions { display: flex; gap: 10px; flex-wrap: wrap; padding-top: 4px; border-top: 1px solid var(--line); padding-top: 16px; }
+
+/* Visit / contact strip */
+.visit-strip {
+  background: var(--cccn-blue-900);
+  color: #fff;
+  border-radius: var(--r-xl);
+  padding: clamp(32px, 5vw, 56px);
+  display: grid; grid-template-columns: 1.4fr 1fr; gap: 32px; align-items: center;
+}
+@media (max-width: 860px) { .visit-strip { grid-template-columns: 1fr; } }
+.visit-strip .h-1 { color: #fff; }
+.visit-strip .lede { color: #D8DEEE; }
+</style>
+</head>
+<body>
+<div data-site-header></div>
+
+<section class="sedes-hero">
+  <div class="container">
+    <nav class="small mb-3" style="color: var(--muted); display: flex; gap: 8px;">
+      <a href="index.html">Inicio</a><span>/</span><span style="color: var(--cccn-blue-900);">Sedes</span>
+    </nav>
+    <div class="grid-2 mt-3" style="align-items: end;">
+      <div>
+        <span class="h-eyebrow">Sedes</span>
+        <h1 class="h-display mt-2">Cuatro sedes, <em>un mismo estándar</em>.</h1>
+      </div>
+      <p class="lede">Cada sede tiene su carácter, pero el método y los profesores certificados son los mismos. Visitanos sin cita.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="container">
+    <div class="sede-grid">
+
+      <article class="sede">
+        <div class="sede__media" style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=80')">
+          <span class="sede__badge"><svg width='12' height='12' viewBox='0 0 24 24' fill='currentColor'><circle cx='12' cy='12' r='6'/></svg> Abierto ahora</span>
+          <div class="sede__name-on-media">San Pedro <em style="color: var(--cccn-red); font-weight: 700;">·</em> Sede principal</div>
+        </div>
+        <div class="sede__body">
+          <div class="sede__addr">
+            <strong style="color:var(--cccn-blue-900); display:block; margin-bottom:4px;">Barrio Dent, San José</strong>
+            Avenida 1, Calle 37. 150 m norte de Estación La Favorita, Los Yoses.
+          </div>
+          <div class="sede__meta">
+            <span class="pill">12 aulas</span>
+            <span class="pill">Biblioteca</span>
+            <span class="pill">Laboratorio</span>
+            <span class="pill pill-cream">Café</span>
+          </div>
+          <div class="sede__svc">
+            <span><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.4'><path d='M20 6 9 17l-5-5'/></svg> Parqueo</span>
+            <span><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.4'><path d='M20 6 9 17l-5-5'/></svg> Accesible</span>
+            <span><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.4'><path d='M20 6 9 17l-5-5'/></svg> WiFi alta velocidad</span>
+            <span><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.4'><path d='M20 6 9 17l-5-5'/></svg> Auditorio</span>
+          </div>
+          <div class="sede__hours">
+            <div><strong>Horario:</strong> Lun a Vie · 7 a.m. – 9 p.m.</div>
+            <div><strong>Sábados:</strong> 7 a.m. – 1 p.m.</div>
+            <div><strong>Teléfono:</strong> 8000-INGLES · WhatsApp +506 8821-8484</div>
+          </div>
+          <div class="sede__actions">
+            <a class="btn btn-primary" target="_blank" href="https://www.google.com/maps/search/?api=1&query=9.934073,-84.061359">Cómo llegar</a>
+            <a class="btn btn-ghost" href="solicitar-informacion.html">Agendar visita</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="sede">
+        <div class="sede__media" style="background-image:url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1400&q=80')">
+          <span class="sede__badge"><svg width='12' height='12' viewBox='0 0 24 24' fill='currentColor'><circle cx='12' cy='12' r='6'/></svg> Abierto ahora</span>
+          <div class="sede__name-on-media">Sabana</div>
+        </div>
+        <div class="sede__body">
+          <div class="sede__addr">
+            <strong style="color:var(--cccn-blue-900); display:block; margin-bottom:4px;">Mata Redonda, San José</strong>
+            Avenida 13. Del ICE 200 m norte, 100 este, 100 norte y 100 este.
+          </div>
+          <div class="sede__meta">
+            <span class="pill">8 aulas</span>
+            <span class="pill">Sala de cómputo</span>
+            <span class="pill pill-cream">Café</span>
+          </div>
+          <div class="sede__svc">
+            <span><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.4'><path d='M20 6 9 17l-5-5'/></svg> Parqueo</span>
+            <span><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.4'><path d='M20 6 9 17l-5-5'/></svg> Accesible</span>
+            <span><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.4'><path d='M20 6 9 17l-5-5'/></svg> WiFi alta velocidad</span>
+            <span><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.4'><path d='M20 6 9 17l-5-5'/></svg> Cerca de Sabana</span>
+          </div>
+          <div class="sede__hours">
+            <div><strong>Horario:</strong> Lun a Vie · 8 a.m. – 8 p.m.</div>
+            <div><strong>Sábados:</strong> 8 a.m. – 12 m.</div>
+            <div><strong>Teléfono:</strong> 8000-INGLES</div>
+          </div>
+          <div class="sede__actions">
+            <a class="btn btn-primary" target="_blank" href="https://www.google.com/maps/search/?api=1&query=9.9409223,-84.103327">Cómo llegar</a>
+            <a class="btn btn-ghost" href="solicitar-informacion.html">Agendar visita</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="sede">
+        <div class="sede__media" style="background-image:url('https://images.unsplash.com/photo-1564981797816-1043664bf78d?w=1400&q=80')">
+          <span class="sede__badge" style="background: var(--cccn-red-100); color: var(--cccn-red);">Nueva sede · Junio</span>
+          <div class="sede__name-on-media">Cartago</div>
+        </div>
+        <div class="sede__body">
+          <div class="sede__addr">
+            <strong style="color:var(--cccn-blue-900); display:block; margin-bottom:4px;">Centro de Cartago</strong>
+            A partir del 1 de junio: Calle 10, entre Avenida 4 y Avenida 2, frente a la CCSS.
+          </div>
+          <div class="sede__meta">
+            <span class="pill">Nueva sede</span>
+            <span class="pill">6 aulas</span>
+            <span class="pill pill-cream">Estudio multimedia</span>
+          </div>
+          <div class="sede__svc">
+            <span><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.4'><path d='M20 6 9 17l-5-5'/></svg> Parqueo público cercano</span>
+            <span><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.4'><path d='M20 6 9 17l-5-5'/></svg> Accesible</span>
+            <span><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.4'><path d='M20 6 9 17l-5-5'/></svg> WiFi alta velocidad</span>
+            <span><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.4'><path d='M20 6 9 17l-5-5'/></svg> Casa colonial restaurada</span>
+          </div>
+          <div class="sede__hours">
+            <div><strong>Horario:</strong> Lun a Vie · 1 p.m. – 9 p.m.</div>
+            <div><strong>Sábados:</strong> 7 a.m. – 1 p.m.</div>
+            <div><strong>Teléfono:</strong> 8000-INGLES</div>
+          </div>
+          <div class="sede__actions">
+            <a class="btn btn-primary" target="_blank" href="https://www.google.com/maps/search/?api=1&query=9.8671123,-83.9452017">Cómo llegar</a>
+            <a class="btn btn-ghost" href="solicitar-informacion.html">Agendar visita</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="sede">
+        <div class="sede__media" style="background-image:url('https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?w=1400&q=80')">
+          <span class="sede__badge"><svg width='12' height='12' viewBox='0 0 24 24' fill='currentColor'><circle cx='12' cy='12' r='6'/></svg> Abierto ahora</span>
+          <div class="sede__name-on-media">Heredia</div>
+        </div>
+        <div class="sede__body">
+          <div class="sede__addr">
+            <strong style="color:var(--cccn-blue-900); display:block; margin-bottom:4px;">Rincón de Sabanilla, Heredia</strong>
+            Campus Universitario ULatina, 2do piso. Frente a Paseo de las Flores.
+          </div>
+          <div class="sede__meta">
+            <span class="pill">6 aulas</span>
+            <span class="pill">Auditorio compartido</span>
+            <span class="pill pill-cream">Convenio ULatina</span>
+          </div>
+          <div class="sede__svc">
+            <span><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.4'><path d='M20 6 9 17l-5-5'/></svg> Parqueo amplio</span>
+            <span><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.4'><path d='M20 6 9 17l-5-5'/></svg> Accesible</span>
+            <span><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.4'><path d='M20 6 9 17l-5-5'/></svg> WiFi alta velocidad</span>
+            <span><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.4'><path d='M20 6 9 17l-5-5'/></svg> Cafetería universitaria</span>
+          </div>
+          <div class="sede__hours">
+            <div><strong>Horario:</strong> Lun a Vie · 1 p.m. – 9 p.m.</div>
+            <div><strong>Sábados:</strong> 7 a.m. – 1 p.m.</div>
+            <div><strong>Teléfono:</strong> 8000-INGLES</div>
+          </div>
+          <div class="sede__actions">
+            <a class="btn btn-primary" target="_blank" href="https://www.google.com/maps/place/XVMR%2BPP5,+Heredia">Cómo llegar</a>
+            <a class="btn btn-ghost" href="solicitar-informacion.html">Agendar visita</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="visit-strip">
+      <div>
+        <span class="h-eyebrow" style="color:var(--cccn-red);">Visitanos</span>
+        <h2 class="h-1 mt-2">¿Querés conocer una sede <em>en persona</em>?</h2>
+        <p class="lede mt-3">Recibimos visitas guiadas sin cita. También podés agendar un horario con un asesor para resolver dudas sobre niveles, horarios y planes de pago.</p>
+      </div>
+      <div class="row" style="justify-content:flex-end;">
+        <a class="btn btn-primary" href="solicitar-informacion.html">Agendar visita</a>
+        <a class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.4);" href="tel:8000464537">Llamar 8000-INGLES</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div data-site-footer></div>
+
+<script src="partials.js"></script>
+<script>CCCN.renderShell({ active: "sedes" });</script>
+</body>
+</html>

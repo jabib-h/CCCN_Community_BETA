@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Nosotros | CCCN</title>
+<link rel="icon" type="image/svg+xml" href="assets/logo-mark.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600;1,9..144,700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+<style>
+/* Editorial hero */
+.nhero { padding: clamp(80px, 12vw, 140px) 0 0; background: var(--cream); }
+.nhero__title { font-family: var(--font-sans); font-weight: 400; font-size: clamp(56px, 9vw, 120px); line-height: .95; letter-spacing: -.03em; color: var(--cccn-blue-900); margin: 0; }
+.nhero__title em { font-weight: 700; color: var(--cccn-red); }
+.nhero__deck {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 48px;
+  padding-bottom: 56px; border-bottom: 1px solid var(--line);
+}
+@media (max-width: 860px) { .nhero__deck { grid-template-columns: 1fr; gap: 24px; } }
+.nhero__lede { font-family: var(--font-sans); font-style: normal; font-weight: 400; font-size: clamp(22px, 2.4vw, 32px); line-height: 1.25; color: var(--cccn-blue-900); }
+.nhero__meta dl { display: grid; gap: 16px; margin: 0; }
+.nhero__meta dt { font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.nhero__meta dd { margin: 4px 0 0; font-size: 18px; color: var(--cccn-blue-900); font-weight: 600; }
+
+/* Mission split */
+.mission {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center;
+}
+@media (max-width: 860px) { .mission { grid-template-columns: 1fr; } }
+.mission__img {
+  aspect-ratio: 5/4; border-radius: var(--r-lg);
+  background: url("https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1400&q=80") center/cover;
+}
+
+/* Timeline */
+.tline { position: relative; display: grid; gap: 0; }
+.tline::before {
+  content: ""; position: absolute; left: 110px; top: 24px; bottom: 24px; width: 2px;
+  background: var(--line-strong);
+}
+@media (max-width: 720px) { .tline::before { left: 8px; } }
+.tline__item {
+  display: grid; grid-template-columns: 120px 1fr;
+  gap: 32px; padding: 32px 0; align-items: flex-start;
+}
+@media (max-width: 720px) { .tline__item { grid-template-columns: 60px 1fr; gap: 16px; } }
+.tline__year {
+  font-family: var(--font-sans); font-style: normal; font-weight: 400; font-size: 32px;
+  color: var(--cccn-red); position: relative; padding-right: 16px;
+  text-align: right;
+}
+.tline__year::after {
+  content: ""; position: absolute; right: -6px; top: 16px;
+  width: 14px; height: 14px; border-radius: 999px;
+  background: #fff; border: 2px solid var(--cccn-red);
+}
+@media (max-width: 720px) { .tline__year { text-align: left; font-size: 22px; } .tline__year::after { right: auto; left: 2px; top: 8px; } }
+.tline__title { font-family: var(--font-sans); font-weight: 500; font-size: 22px; color: var(--cccn-blue-900); margin: 0 0 6px; }
+.tline__desc { color: var(--muted); font-size: 15px; max-width: 56ch; }
+
+/* Pillars */
+.pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+@media (max-width: 860px) { .pillars { grid-template-columns: 1fr; } }
+.pillar {
+  background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg);
+  padding: 32px;
+}
+.pillar h3 { font-family: var(--font-sans); font-weight: 500; font-size: 26px; color: var(--cccn-blue-900); margin: 16px 0 8px; letter-spacing: -.01em; }
+.pillar p { color: var(--muted); font-size: 15px; line-height: 1.6; margin: 0; }
+.pillar__num { font-family: var(--font-sans); font-style: normal; font-weight: 400; font-size: 48px; color: var(--cccn-red); line-height: 1; }
+
+/* Acreditaciones */
+.acreds { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+@media (max-width: 860px) { .acreds { grid-template-columns: 1fr 1fr; } }
+.acred {
+  background: #fff; border: 1px solid var(--line); border-radius: var(--r-md);
+  padding: 24px; display: flex; flex-direction: column; gap: 6px; min-height: 140px;
+  justify-content: flex-end;
+}
+.acred__name { font-family: var(--font-sans); font-weight: 500; color: var(--cccn-blue-900); font-size: 18px; }
+.acred__sub { color: var(--muted); font-size: 13px; }
+
+/* Board */
+.board { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+@media (max-width: 860px) { .board { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .board { grid-template-columns: 1fr; } }
+.bm__photo { aspect-ratio: 4/5; border-radius: var(--r-md); background-color: var(--cccn-blue-100); background-size: cover; background-position: center; }
+.bm__name { font-family: var(--font-sans); font-weight: 500; font-size: 19px; color: var(--cccn-blue-900); margin: 12px 0 2px; }
+.bm__role { color: var(--muted); font-size: 13px; }
+
+</style>
+</head>
+<body>
+<div data-site-header></div>
+
+<section class="nhero" id="historia">
+  <div class="container">
+    <nav class="small" style="color: var(--muted); display: flex; gap: 8px; margin-bottom: 32px;">
+      <a href="index.html">Inicio</a><span>/</span><span style="color: var(--cccn-blue-900);">Nosotros</span>
+    </nav>
+    <span class="rule-acc">Desde 1945</span>
+    <h1 class="nhero__title mt-3">Un puente <em>entre dos países</em>,<br/>desde hace ochenta años.</h1>
+    <div class="nhero__deck">
+      <p class="nhero__lede">Somos una asociación sin fines de lucro, declarada de utilidad pública y avalada por el Departamento de Estado de los Estados Unidos. Nuestra misión: abrir el mundo a través del inglés y del intercambio cultural binacional.</p>
+      <div class="nhero__meta">
+        <dl>
+          <div><dt>Fundación</dt><dd>26 de octubre de 1945</dd></div>
+          <div><dt>Naturaleza</dt><dd>Asociación sin fines de lucro</dd></div>
+          <div><dt>Aval</dt><dd>Departamento de Estado · EE.UU.</dd></div>
+          <div><dt>Graduados</dt><dd>+80,000 personas</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="mission">
+      <div class="mission__img" role="img" aria-label="Estudiantes del CCCN en clase"></div>
+      <div>
+        <span class="h-eyebrow">Nuestra misión</span>
+        <h2 class="h-1 mt-2">Educación con <em>propósito público</em>.</h2>
+        <p class="lede mt-3">Como asociación sin fines de lucro, cada colón que recibimos vuelve a la institución: en becas, en infraestructura, en programas culturales abiertos al público y en mejorar la enseñanza del inglés en Costa Rica.</p>
+        <p class="body mt-3" style="max-width: 60ch;">Trabajamos con escuelas públicas, universidades, embajadas y comunidades vulnerables para que el inglés deje de ser un privilegio y sea una herramienta accesible para más costarricenses.</p>
+        <div class="row mt-4">
+          <a class="btn btn-dark" href="#gestion">Ver gestión social</a>
+          <a class="btn btn-ghost" href="programa-adultos.html">Conocer programas</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-cream">
+  <div class="container">
+    <div class="text-center" style="margin-bottom: 48px;">
+      <span class="h-eyebrow">Línea del tiempo</span>
+      <h2 class="h-1 mt-2"><em>80 años</em> de historia</h2>
+    </div>
+
+    <div class="tline">
+      <div class="tline__item">
+        <span class="tline__year">1945</span>
+        <div>
+          <h3 class="tline__title">Fundación del CCCN</h3>
+          <p class="tline__desc">Un grupo de costarricenses y estadounidenses crea la institución para promover el entendimiento mutuo a través del idioma y la cultura.</p>
+        </div>
+      </div>
+      <div class="tline__item">
+        <span class="tline__year">1960</span>
+        <div>
+          <h3 class="tline__title">Primer programa estructurado de inglés</h3>
+          <p class="tline__desc">Se diseñan los niveles con metodología propia, inspirados en las mejores prácticas de instituciones binacionales en Latinoamérica.</p>
+        </div>
+      </div>
+      <div class="tline__item">
+        <span class="tline__year">1984</span>
+        <div>
+          <h3 class="tline__title">Declaración de utilidad pública</h3>
+          <p class="tline__desc">El Estado costarricense reconoce nuestra labor como de interés público, consolidando nuestro carácter no lucrativo.</p>
+        </div>
+      </div>
+      <div class="tline__item">
+        <span class="tline__year">2001</span>
+        <div>
+          <h3 class="tline__title">Apertura de EducationUSA</h3>
+          <p class="tline__desc">Nos convertimos en centro oficial de asesoría para costarricenses que desean estudiar en universidades de Estados Unidos.</p>
+        </div>
+      </div>
+      <div class="tline__item">
+        <span class="tline__year">2015</span>
+        <div>
+          <h3 class="tline__title">Apertura de la sede Heredia</h3>
+          <p class="tline__desc">Llegamos al Gran Área Metropolitana con cuatro sedes activas.</p>
+        </div>
+      </div>
+      <div class="tline__item">
+        <span class="tline__year">2020</span>
+        <div>
+          <h3 class="tline__title">Aulas virtuales nacionales</h3>
+          <p class="tline__desc">Lanzamos la modalidad virtual en vivo, llegando a estudiantes en las siete provincias del país.</p>
+        </div>
+      </div>
+      <div class="tline__item">
+        <span class="tline__year">2025</span>
+        <div>
+          <h3 class="tline__title">80 aniversario</h3>
+          <p class="tline__desc">Celebramos ocho décadas con una nueva sede en Cartago, programas culturales ampliados y la meta de superar 100 mil graduados.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="gestion">
+  <div class="container">
+    <div class="text-center" style="margin-bottom: 48px;">
+      <span class="h-eyebrow">Gestión social</span>
+      <h2 class="h-1 mt-2"><em>Tres compromisos</em> con el país</h2>
+    </div>
+
+    <div class="pillars">
+      <article class="pillar">
+        <div class="pillar__num">01</div>
+        <h3>Becas y acceso</h3>
+        <p>Más de 600 becas otorgadas en 2025 a estudiantes de comunidades vulnerables, con acompañamiento académico hasta completar el programa.</p>
+      </article>
+      <article class="pillar">
+        <div class="pillar__num">02</div>
+        <h3>Alianzas con escuelas</h3>
+        <p>Capacitación gratuita a docentes de inglés del MEP y donación de materiales en zonas rurales. Trabajamos con más de 80 instituciones públicas.</p>
+      </article>
+      <article class="pillar">
+        <div class="pillar__num">03</div>
+        <h3>Cultura abierta</h3>
+        <p>Conciertos, exposiciones y conversatorios gratuitos abiertos al público en nuestras sedes. Más de 12 mil asistentes en 2025.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section-cream">
+  <div class="container">
+    <div class="text-center" style="margin-bottom: 48px;">
+      <span class="h-eyebrow">Acreditaciones</span>
+      <h2 class="h-1 mt-2">Avalados por quien <em>importa</em></h2>
+      <p class="lede mt-3" style="margin-left:auto;margin-right:auto;">Nuestro estándar académico es reconocido por gobiernos, universidades y organismos internacionales.</p>
+    </div>
+    <div class="acreds">
+      <div class="acred"><span class="cap">EE.UU.</span><div class="acred__name">U.S. Department of State</div><div class="acred__sub">Centro binacional oficial</div></div>
+      <div class="acred"><span class="cap">Costa Rica</span><div class="acred__name">MEP</div><div class="acred__sub">Convenios con educación pública</div></div>
+      <div class="acred"><span class="cap">Certificación</span><div class="acred__name">ETS · TOEFL</div><div class="acred__sub">Centro autorizado en CR</div></div>
+      <div class="acred"><span class="cap">Educación</span><div class="acred__name">EducationUSA</div><div class="acred__sub">Asesoría oficial gratuita</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="text-center" style="margin-bottom: 48px;">
+      <span class="h-eyebrow">Junta directiva</span>
+      <h2 class="h-1 mt-2">Liderazgo <em>binacional</em></h2>
+    </div>
+    <div class="board">
+      <div>
+        <div class="bm__photo" style="background-image:url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80')"></div>
+        <h3 class="bm__name">Andrea Vargas</h3>
+        <div class="bm__role">Presidenta</div>
+      </div>
+      <div>
+        <div class="bm__photo" style="background-image:url('https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80')"></div>
+        <h3 class="bm__name">Robert Hensley</h3>
+        <div class="bm__role">Vicepresidente</div>
+      </div>
+      <div>
+        <div class="bm__photo" style="background-image:url('https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&q=80')"></div>
+        <h3 class="bm__name">Carolina Mora</h3>
+        <div class="bm__role">Secretaria</div>
+      </div>
+      <div>
+        <div class="bm__photo" style="background-image:url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80')"></div>
+        <h3 class="bm__name">James Carrillo</h3>
+        <div class="bm__role">Tesorero</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="aula-virtual">
+  <div class="container">
+    <div class="cta-banner" style="background: radial-gradient(ellipse at top right, rgba(200,16,46,.18), transparent 60%), var(--cccn-blue-900); color: #fff; border-radius: var(--r-xl); padding: clamp(40px, 6vw, 72px); display:grid; grid-template-columns:1.4fr 1fr; gap:40px; align-items:center;">
+      <div>
+        <span class="h-eyebrow" style="color:var(--cccn-red);">Sumate</span>
+        <h2 class="h-1 mt-2" style="color:#fff;">Sé parte de <em style="color: var(--cccn-red); font-weight: 700;">los próximos 80</em>.</h2>
+        <p class="lede mt-3" style="color:#D8DEEE;">Estudiantes, donantes, empresas aliadas: hay muchas formas de construir un Costa Rica más conectado al mundo.</p>
+      </div>
+      <div class="row" style="justify-content:flex-end;">
+        <a class="btn btn-primary" href="solicitar-informacion.html">Hablar con nosotros</a>
+        <a class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.4);" href="programa-adultos.html">Ver programas</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+@media (max-width: 860px) {
+  .cta-banner { grid-template-columns: 1fr !important; }
+  .cta-banner .row { justify-content: flex-start !important; }
+}
+</style>
+
+<div data-site-footer></div>
+<script src="partials.js"></script>
+<script>CCCN.renderShell({ active: "nosotros" });</script>
+</body>
+</html>

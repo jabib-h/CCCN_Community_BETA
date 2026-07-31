@@ -1,0 +1,48 @@
+/* Shell compartido de la app (usuario + admin). Depende de ds/styles.css. Cero inline (CSP). */
+
+body{background:var(--tint);color:var(--ink);min-height:100vh;display:flex;flex-direction:column;}
+.flag-strip{height:3px;width:100%;background:linear-gradient(to right,var(--cccn-red) 0 33.33%,var(--cccn-gray) 33.33% 66.66%,var(--cccn-blue-700) 66.66% 100%);}
+[hidden]{display:none !important;}
+
+/* Marca */
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.brand img{height:40px;width:auto;}
+.brand b{font-weight:700;font-size:15px;color:var(--cccn-blue-900);letter-spacing:-.01em;}
+
+/* Toast */
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);opacity:0;
+  background:var(--cccn-blue-900);color:#fff;padding:12px 20px;border-radius:999px;font-size:14px;font-weight:600;
+  box-shadow:var(--shadow-lg);transition:opacity .2s ease,transform .2s ease;z-index:200;pointer-events:none;max-width:90vw;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+.toast.err{background:var(--cccn-red-700);}
+
+/* Utilidades del shell */
+.muted{color:var(--muted);}
+.center{text-align:center;}
+.stack{display:grid;gap:16px;}
+.spinner{width:22px;height:22px;border:3px solid var(--line);border-top-color:var(--cccn-blue-700);border-radius:999px;animation:spin .8s linear infinite;margin:24px auto;}
+@keyframes spin{to{transform:rotate(360deg);}}
+@media (prefers-reduced-motion:reduce){.spinner{animation:none;}.toast{transition:none;}}
+
+/* Medallón reutilizable */
+.medallion{position:relative;container-type:inline-size;}
+.medallion svg{display:block;width:100%;height:auto;}
+.medallion__code{position:absolute;left:50%;top:57.6%;transform:translate(-50%,-50%);
+  font-family:var(--font-sans);font-weight:700;color:#fff;text-align:center;white-space:nowrap;font-size:11.2cqw;}
+.medallion__code.long{font-size:7.7cqw;}
+
+/* Estado vacío */
+.empty{border:1px dashed var(--line-strong);border-radius:var(--r-lg);padding:40px 24px;text-align:center;color:var(--muted-2);font-size:14px;}
+
+/* Solo para lectores de pantalla (labels accesibles sin ruido visual) */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+
+/* Utilidades (evitan inline styles — bloqueados por CSP) */
+.m0{margin:0;}
+.fs-sm{font-size:14px;}
+.fs-xs{font-size:12px;}
+.btn-block{justify-content:center;width:100%;}
+.mt-s{margin-top:8px;}
+.mt-m{margin-top:24px;}
+.row-gap{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}

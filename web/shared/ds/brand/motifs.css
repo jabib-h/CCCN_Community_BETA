@@ -1,0 +1,40 @@
+/* Photography treatment — brand book: "recortes, blanco y negro, transparencias, patrones sencillos" */
+.bw img,img.bw,.bw{filter:grayscale(1) contrast(1.05);}
+.bw-blue{filter:grayscale(1) contrast(1.05);mix-blend-mode:multiply;}
+.duo-blue{position:relative;isolation:isolate;}
+.duo-blue::before{content:"";position:absolute;inset:0;z-index:1;background:var(--cccn-blue-700);mix-blend-mode:screen;opacity:.25;}
+.duo-blue>img,.duo-blue{filter:grayscale(1) contrast(1.06);}
+/* Color "plastas" — flat color blocks per brand book */
+.plasta-red{background:var(--cccn-red);color:#fff;}
+.plasta-blue{background:var(--cccn-blue-700);color:#fff;}
+.plasta-navy{background:var(--cccn-blue-900);color:#fff;}
+.plasta-gray{background:var(--cccn-gray);color:#fff;}
+.plasta-cream{background:var(--cream);color:var(--cccn-blue-900);}
+.plasta-red .h-eyebrow,.plasta-blue .h-eyebrow,.plasta-navy .h-eyebrow{color:#fff;opacity:.85;}
+.plasta-red .h-1,.plasta-blue .h-1,.plasta-navy .h-1,.plasta-red .h-2,.plasta-blue .h-2,.plasta-navy .h-2,.plasta-red .h-display,.plasta-blue .h-display,.plasta-navy .h-display{color:#fff;}
+.plasta-red .h-1 em,.plasta-blue .h-1 em,.plasta-navy .h-1 em,.plasta-red .h-2 em,.plasta-blue .h-2 em,.plasta-navy .h-2 em,.plasta-red .h-display em,.plasta-blue .h-display em,.plasta-navy .h-display em{color:#fff;opacity:1;}
+.plasta-red .lede,.plasta-blue .lede,.plasta-navy .lede{color:rgba(255,255,255,.85);}
+/* Decorative flag ribbon */
+.strip-flag{height:6px;width:100%;background:linear-gradient(to right,var(--cccn-red) 0 33.33%,var(--cccn-gray) 33.33% 66.66%,var(--cccn-blue-700) 66.66% 100%);}
+/* THE "REAL" positioning treatment (brand book p.36-37) — the only place Fraunces appears */
+.real-tag{display:inline-flex;flex-direction:column;line-height:.82;font-family:var(--font-sans);font-weight:300;letter-spacing:.04em;text-transform:uppercase;color:var(--cccn-red);width:max-content;}
+.real-tag>span:first-child{letter-spacing:.12em;}
+.real-tag em{font-family:var(--font-display);font-style:italic;font-weight:700;text-transform:none;letter-spacing:-.02em;color:var(--cccn-blue-700);margin-top:.04em;margin-left:-.02em;}
+.real-tag-xs{font-size:12px;} .real-tag-xs em{font-size:22px;line-height:.88;}
+.real-tag-sm{font-size:16px;} .real-tag-sm em{font-size:32px;line-height:.88;}
+.real-tag-md{font-size:22px;} .real-tag-md em{font-size:48px;line-height:.88;}
+.real-tag-lg{font-size:36px;} .real-tag-lg em{font-size:80px;line-height:.88;}
+.real-tag-xl{font-size:56px;} .real-tag-xl em{font-size:128px;line-height:.88;}
+.real-tag.on-dark,.real-tag.on-dark em{color:#fff;}
+.real-tag.red-em em{color:var(--cccn-red);}
+.real-tag.center{text-align:center;align-items:center;}
+.brand-waves{position:absolute;pointer-events:none;width:240px;height:80px;opacity:.25;
+background:radial-gradient(ellipse 60px 8px at 30% 50%,var(--cccn-red) 50%,transparent 51%) 0 0/80px 24px repeat-x,
+radial-gradient(ellipse 60px 8px at 70% 50%,var(--cccn-blue-700) 50%,transparent 51%) 0 24px/80px 24px repeat-x,
+radial-gradient(ellipse 60px 8px at 50% 50%,var(--cccn-gray) 50%,transparent 51%) 0 48px/80px 24px repeat-x;}
+.rule-acc{display:inline-flex;align-items:center;gap:12px;color:var(--muted);font-size:13px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;}
+.rule-acc::before,.rule-acc::after{content:"";height:1px;width:32px;background:var(--line-strong);}
+.ph{background:linear-gradient(135deg,#1E4FA3,#002F6C 70%);color:#fff;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;}
+.ph small{opacity:.85;max-width:22ch;}
+.ph-warm{background:linear-gradient(135deg,#C8102E,#7a0a1c);}
+.ph-cream{background:linear-gradient(135deg,#F7F3EC,#E8DFCD);color:var(--cccn-blue-900);}

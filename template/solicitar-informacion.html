@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Solicitar información | CCCN</title>
+<link rel="icon" type="image/svg+xml" href="assets/logo-mark.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600;1,9..144,700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+<style>
+.form-page { background: #fff; }
+.form-grid {
+  display: grid; grid-template-columns: 1fr 1.2fr;
+  min-height: calc(100vh - 90px);
+}
+@media (max-width: 880px) { .form-grid { grid-template-columns: 1fr; min-height: auto; } }
+
+/* LEFT: brand panel */
+.form-side {
+  background: var(--cccn-blue-900); color: #fff;
+  padding: clamp(40px, 5vw, 72px);
+  display: flex; flex-direction: column; gap: 32px;
+  position: relative; overflow: hidden;
+}
+.form-side::before {
+  content: ""; position: absolute; top: 0; left: 0; width: 4px; bottom: 0;
+  background: var(--cccn-red);
+}
+.form-side h1 {
+  font-family: var(--font-sans); font-weight: 200;
+  font-size: clamp(36px, 4vw, 52px); line-height: 1.02; letter-spacing: -.025em;
+  color: #fff; margin: 0;
+}
+.form-side h1 em { font-style: normal; font-weight: 700; color: var(--cccn-red); }
+.form-side .lede { color: rgba(255,255,255,.85); max-width: 36ch; font-size: 17px; }
+
+.form-side__list { list-style: none; padding: 0; margin: 16px 0 0; display: grid; gap: 14px; }
+.form-side__list li { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; color: rgba(255,255,255,.9); }
+.form-side__list svg { flex-shrink: 0; color: var(--cccn-red); margin-top: 2px; }
+
+.form-side__contact {
+  margin-top: auto; padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,.15);
+  font-size: 14px; color: rgba(255,255,255,.7);
+  display: grid; gap: 8px;
+}
+.form-side__contact strong { color: #fff; font-size: 20px; font-weight: 700; }
+
+/* RIGHT: form */
+.form-main {
+  padding: clamp(40px, 5vw, 72px);
+  display: flex; flex-direction: column;
+  background: #fff;
+}
+
+.steps {
+  display: flex; gap: 8px; margin-bottom: 32px;
+}
+.step {
+  flex: 1; height: 4px; background: var(--line); border-radius: 2px;
+  transition: background .3s ease;
+}
+.step.is-done { background: var(--cccn-red); }
+.step.is-current { background: var(--cccn-red); }
+
+.step-meta {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;
+  font-size: 13px; font-weight: 600; color: var(--muted); letter-spacing: .04em;
+}
+.step-meta strong { color: var(--cccn-blue-900); }
+
+.step-title {
+  font-family: var(--font-sans); font-weight: 200;
+  font-size: clamp(30px, 3.4vw, 42px); line-height: 1.05; letter-spacing: -.02em;
+  color: var(--cccn-blue-900); margin: 0 0 8px;
+}
+.step-title em { font-style: normal; font-weight: 700; color: var(--cccn-red); }
+.step-sub { color: var(--muted); font-size: 16px; margin: 0 0 28px; max-width: 50ch; }
+
+.fields { display: grid; gap: 18px; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+@media (max-width: 600px) { .field-row { grid-template-columns: 1fr; } }
+
+/* Radio cards */
+.rcards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 500px) { .rcards { grid-template-columns: 1fr; } }
+.rcard {
+  position: relative; cursor: pointer;
+  border: 1px solid var(--line-strong); border-radius: 12px;
+  padding: 18px; display: flex; flex-direction: column; gap: 4px;
+  transition: border-color .15s ease, background .15s ease;
+}
+.rcard:hover { border-color: var(--cccn-blue-500); background: var(--cccn-blue-100); }
+.rcard input { position: absolute; opacity: 0; pointer-events: none; }
+.rcard.is-selected { border-color: var(--cccn-red); border-width: 2px; background: var(--cccn-red-100); padding: 17px; }
+.rcard__title { font-weight: 700; color: var(--cccn-blue-900); font-size: 15px; }
+.rcard__meta { color: var(--muted); font-size: 13px; }
+.rcard__check {
+  position: absolute; top: 14px; right: 14px;
+  width: 22px; height: 22px; border-radius: 999px;
+  border: 1.5px solid var(--line-strong);
+  display: inline-flex; align-items: center; justify-content: center;
+  color: #fff;
+  background: #fff;
+}
+.rcard.is-selected .rcard__check { background: var(--cccn-red); border-color: var(--cccn-red); }
+.rcard.is-selected .rcard__check svg { display: block; }
+.rcard__check svg { display: none; }
+
+.foot { display: flex; gap: 12px; justify-content: space-between; margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
+
+/* Summary at confirm */
+.summary {
+  background: var(--cream); border-radius: 12px;
+  padding: 24px; display: grid; gap: 12px;
+}
+.summary dl { margin: 0; display: grid; grid-template-columns: 130px 1fr; gap: 8px 16px; }
+.summary dt { color: var(--muted); font-size: 13px; }
+.summary dd { margin: 0; color: var(--cccn-blue-900); font-weight: 600; font-size: 14px; }
+.summary__edit { font-size: 13px; color: var(--cccn-red); font-weight: 600; cursor: pointer; background: none; border: 0; padding: 0; text-decoration: underline; }
+
+/* Success */
+.success {
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 20px;
+  padding: 32px 0;
+}
+.success__icon {
+  width: 80px; height: 80px; border-radius: 999px;
+  background: #E6F4EA; color: #1F8A5B;
+  display: inline-flex; align-items: center; justify-content: center;
+  animation: pop .5s ease-out;
+}
+@keyframes pop { 0% { transform: scale(.4); opacity: 0; } 60% { transform: scale(1.1); } 100% { transform: scale(1); opacity: 1; } }
+.success h2 {
+  font-family: var(--font-sans); font-weight: 200;
+  font-size: clamp(28px, 3vw, 42px); color: var(--cccn-blue-900); margin: 0;
+  letter-spacing: -.02em;
+}
+.success h2 em { font-style: normal; font-weight: 700; color: var(--cccn-red); }
+.success p { color: var(--muted); margin: 0; max-width: 40ch; }
+.success__case { background: var(--cream); padding: 14px 20px; border-radius: 10px; font-size: 14px; color: var(--cccn-blue-900); font-weight: 600; }
+</style>
+</head>
+<body>
+<div data-site-header></div>
+
+<main class="form-page">
+  <div class="form-grid">
+
+    <aside class="form-side">
+      <span class="real-tag real-tag-md on-dark">
+        <span>REAL</span><em>english</em>
+      </span>
+      <div>
+        <h1>Hablemos sobre <em>tu inglés</em>.</h1>
+        <p class="lede" style="margin-top:16px;">Contanos qué necesitás y un asesor te contactará en menos de 24 horas hábiles. Sin compromiso.</p>
+      </div>
+      <ul class="form-side__list">
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Diagnóstico de nivel gratuito</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Recomendación personalizada de plan</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Información sobre becas y financiamiento</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Horarios y modalidades disponibles</li>
+      </ul>
+
+      <div class="form-side__contact">
+        <span>¿Preferís llamar?</span>
+        <strong>8000-INGLES</strong>
+        <span>Lun a Vie · 8 a.m. – 8 p.m.</span>
+      </div>
+    </aside>
+
+    <section class="form-main">
+      <div id="app"></div>
+    </section>
+
+  </div>
+</main>
+
+<div data-site-footer></div>
+
+<script src="partials.js"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="form.jsx"></script>
+<script>CCCN.renderShell({ active: "" });</script>
+</body>
+</html>

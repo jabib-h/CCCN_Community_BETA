@@ -1,0 +1,68 @@
+/* Estilos propios del Hub. Los tokens, la tipografía y los componentes base vienen de
+   shared/ds/ (fuente única de marca) — acá solo va lo que el Hub agrega. */
+
+/* ---------- Landing ---------- */
+.lhero__grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: center; }
+.lhero__mark {
+  aspect-ratio: 1; border-radius: var(--r-lg);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 4px; text-align: center;
+}
+.lhero__mark-num { font-size: clamp(72px, 10vw, 132px); font-weight: 200; line-height: 1; }
+.lhero__mark-txt { font-size: 13px; letter-spacing: .18em; text-transform: uppercase; opacity: .8; }
+@media (max-width: 880px) {
+  .lhero__grid { grid-template-columns: 1fr; }
+  .lhero__mark { display: none; }
+}
+
+/* ---------- Tarjetas de módulo ---------- */
+.mods { align-items: stretch; }
+.mod { position: relative; }
+.mod__bar { height: 5px; flex-shrink: 0; background: var(--cccn-gray); }
+.mod__bar--red    { background: var(--cccn-red); }
+.mod__bar--blue   { background: var(--cccn-blue-700); }
+.mod__bar--cyan   { background: var(--acc-cyan); }
+.mod__bar--orange { background: var(--acc-orange); }
+.mod__bar--olive  { background: var(--acc-olive); }
+.mod__bar--gray   { background: var(--line-strong); }
+/* Los slugs vienen de api/modules.py; mantener sincronizados los dos lados. */
+.mod__bar--cop        { background: var(--cccn-red); }
+.mod__bar--revista    { background: var(--cccn-blue-700); }
+.mod__bar--libros     { background: var(--acc-cyan); }
+.mod__bar--badges     { background: var(--acc-orange); }
+.mod__bar--biblioteca { background: var(--acc-olive); }
+
+.mod__nota { color: var(--muted); margin: 0; }
+.mod.is-locked { opacity: .62; }
+.mod.is-locked:hover { transform: none; box-shadow: none; border-color: var(--line); }
+.mod--next { border-style: dashed; }
+
+/* ---------- Avisos y membresías ---------- */
+.avisos, .membs { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.aviso, .memb {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 12px;
+  padding: 12px 16px; border: 1px solid var(--line); border-radius: var(--r-md); background: #fff;
+}
+.aviso { border-left: 4px solid var(--cccn-red); }
+.aviso strong { margin-left: auto; color: var(--cccn-blue-900); }
+
+/* ---------- Acceso ---------- */
+.acceso { display: grid; grid-template-columns: 1fr 480px; gap: 64px; align-items: center; }
+.acceso__card { overflow: visible; }
+@media (max-width: 880px) {
+  .acceso { grid-template-columns: 1fr; gap: 32px; }
+  .acceso__side { text-align: center; }
+}
+
+.tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); }
+.tab {
+  flex: 1; padding: 12px; background: none; border: 0; border-bottom: 2px solid transparent;
+  font-weight: 600; font-size: 14px; color: var(--muted);
+}
+.tab.is-active { color: var(--cccn-red); border-bottom-color: var(--cccn-red); }
+
+.consent {
+  padding: 16px; border-radius: var(--r-md);
+  background: var(--cream); border: 1px solid var(--cream-2);
+}
+.consent .small { margin: 0; color: var(--ink-2); }

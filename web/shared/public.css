@@ -1,0 +1,49 @@
+/* Páginas públicas server-rendered (verificación /b/{id}, backpack /u/{slug}, legal /legal/*).
+   Sin JS, sin inline (CSP). Los tokens y la fuente Raleway vienen de ds/styles.css — este
+   archivo SOLO define los estilos propios de estas páginas.
+   Cargar siempre después de: /app/shared/ds/styles.css */
+:root{--navy:var(--cccn-blue-900);--blue:var(--cccn-blue-700);--red:var(--cccn-red);--green:#1f8a5b;}
+body{margin:0;background:var(--cream);color:var(--ink);line-height:1.55;}
+.flag{height:3px;background:linear-gradient(to right,#ee304e 0 33.33%,#77787b 33.33% 66.66%,#2d479d 66.66% 100%);}
+.wrap{max-width:760px;margin:0 auto;padding:48px 20px 80px;display:grid;gap:24px;}
+footer{background:var(--navy);color:#8A99B8;text-align:center;font-size:13px;padding:28px 16px;}
+footer a{color:#C9D2E6;text-decoration:none;}
+footer a:hover{color:#fff;}
+.banner{display:flex;flex-direction:column;gap:2px;padding:18px 22px;background:#fff;border:1px solid var(--line);border-radius:16px;}
+.banner strong{font-size:17px;}
+.banner span{font-size:13px;color:var(--muted);}
+.banner-valid strong{color:var(--green);}
+.banner-revoked{background:var(--tint);}
+.cert{background:#fff;border:1px solid var(--line);border-radius:24px;padding:48px 32px;text-align:center;display:grid;gap:10px;box-shadow:0 24px 60px -24px rgba(11,19,32,.30),0 6px 18px rgba(11,19,32,.08);}
+.cert-revoked{filter:grayscale(.5) opacity(.85);}
+.medallion{width:130px;margin:0 auto;}
+.sub{font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--muted);margin:0;}
+.cert h1{font-weight:300;font-size:clamp(28px,5vw,40px);letter-spacing:-.02em;color:var(--navy);margin:0;}
+.verb{color:var(--muted);font-size:15px;margin:0;}
+.cert h2{font-weight:700;font-size:clamp(20px,3.5vw,28px);margin:0;}
+.criteria{font-size:13px;color:var(--muted);max-width:52ch;margin:8px auto 0;}
+.muted{color:var(--muted);font-size:13px;}
+code{font-size:12px;background:var(--tint);padding:2px 6px;border-radius:6px;}
+.links{text-align:center;font-size:13px;}
+.links a{color:var(--blue);text-decoration:none;border-bottom:1px solid var(--blue);}
+.bp-head{text-align:center;}
+.bp-head h1{font-weight:300;color:var(--navy);letter-spacing:-.02em;margin:0;}
+.badge-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px;}
+.badge-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;display:grid;gap:8px;text-align:center;text-decoration:none;color:var(--ink);transition:transform .2s ease,box-shadow .2s ease;}
+.badge-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px -12px rgba(11,19,32,.18);}
+.badge-card img{width:96px;margin:0 auto;}
+.badge-card strong{font-size:14px;color:var(--navy);}
+.badge-card span{font-size:12px;color:var(--muted);}
+/* Documentos legales */
+.doc{text-align:left;display:block;}
+.doc h1{text-align:center;font-weight:300;font-size:clamp(26px,4vw,34px);letter-spacing:-.02em;color:var(--navy);margin:0 0 4px;}
+.doc h2{font-weight:600;font-size:17px;color:var(--navy);margin:24px 0 6px;}
+.doc p,.doc li{font-size:14px;line-height:1.65;}
+.doc a{color:var(--blue);}
+.center{text-align:center;}
+.cookie-table{width:100%;border-collapse:collapse;font-size:14px;}
+.cookie-table tr{border-bottom:1px solid var(--line);}
+.cookie-table th{text-align:left;padding:8px;}
+.cookie-table td{padding:8px;}
+@media (prefers-reduced-motion: reduce){.badge-card{transition:none;}}
+@media (max-width:520px){.badge-grid{grid-template-columns:1fr 1fr;}.cert{padding:32px 16px;}}

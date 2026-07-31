@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Ingresar | CCCN Hub</title>
+<link rel="stylesheet" href="/app/shared/ds/styles.css"/>
+<link rel="stylesheet" href="/app/shared/app.css"/>
+<link rel="stylesheet" href="/app/shared/hub.css"/>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container site-header__bar">
+    <a class="site-header__logo" href="/app/"><img src="/app/shared/img/logo.png" alt="CCCN"/></a>
+  </div>
+</header>
+
+<main class="container section acceso">
+
+  <div class="acceso__side stack">
+    <span class="h-eyebrow">CCCN Hub</span>
+    <h1 class="h-1">Una cuenta<br/>para <em>todo</em></h1>
+    <p class="lede">Con el mismo acceso entrás a la comunidad de práctica, la revista,
+      la biblioteca y tus credenciales.</p>
+  </div>
+
+  <div class="acceso__card card">
+    <div class="card__body stack">
+
+      <div class="tabs" role="tablist">
+        <button class="tab is-active" type="button" id="tab-login" role="tab" aria-selected="true" aria-controls="panel-login">Ingresar</button>
+        <button class="tab" type="button" id="tab-registro" role="tab" aria-selected="false" aria-controls="panel-registro">Crear cuenta</button>
+      </div>
+
+      <!-- ---------- Ingresar ---------- -->
+      <form class="stack" id="panel-login" role="tabpanel" aria-labelledby="tab-login">
+        <div class="field">
+          <label for="l-email">Correo</label>
+          <input id="l-email" name="email" type="email" autocomplete="email" required/>
+        </div>
+        <div class="field">
+          <label for="l-pass">Contraseña</label>
+          <input id="l-pass" name="password" type="password" autocomplete="current-password" required/>
+        </div>
+        <button class="btn btn-primary btn-block" type="submit">Ingresar</button>
+
+        <p class="cap text-center">o con tu cuenta institucional</p>
+        <div class="row-gap">
+          <a class="btn btn-ghost btn-block" href="/api/v1/auth/oauth/microsoft/login">Microsoft</a>
+          <a class="btn btn-ghost btn-block" href="/api/v1/auth/oauth/google/login">Google</a>
+        </div>
+      </form>
+
+      <!-- ---------- Crear cuenta ---------- -->
+      <form class="stack" id="panel-registro" role="tabpanel" aria-labelledby="tab-registro" hidden>
+        <div class="field">
+          <label for="r-nombre">Nombre completo</label>
+          <input id="r-nombre" name="nombre" type="text" autocomplete="name" minlength="2" maxlength="200" required/>
+        </div>
+        <div class="field">
+          <label for="r-email">Correo</label>
+          <input id="r-email" name="email" type="email" autocomplete="email" required/>
+        </div>
+        <div class="field">
+          <label for="r-pass">Contraseña</label>
+          <input id="r-pass" name="password" type="password" autocomplete="new-password" minlength="10" required/>
+          <span class="hint">Mínimo 10 caracteres.</span>
+        </div>
+        <div class="field">
+          <label for="r-nac">Fecha de nacimiento</label>
+          <input id="r-nac" name="fecha_nacimiento" type="date" required/>
+          <span class="hint">Las personas menores de edad no pueden autorregistrarse; la cuenta
+            la gestiona el CCCN con autorización de la persona tutora.</span>
+        </div>
+
+        <!-- Deber de información (Ley N.º 8968 art. 5). Casillas SIN preseleccionar:
+             el silencio o la inacción no son consentimiento. -->
+        <div class="consent stack-sm">
+          <p class="small">El CCCN mantiene una base de datos personales para operar los servicios
+            del Hub (identificación, membresías, préstamos, credenciales y cobros). Los datos no se
+            venden ni se ceden a terceros ajenos a esos fines. Suministrarlos es obligatorio para
+            tener cuenta; podés ejercer tus derechos de acceso, rectificación, cancelación y
+            oposición cuando querás.</p>
+          <label class="checkbox">
+            <input id="r-priv" type="checkbox"/>
+            <span>Leí y acepto la <a href="/app/legal/privacidad.html">Política de Privacidad</a>.</span>
+          </label>
+          <label class="checkbox">
+            <input id="r-tos" type="checkbox"/>
+            <span>Acepto los <a href="/app/legal/terminos.html">Términos de Uso</a>.</span>
+          </label>
+        </div>
+
+        <button class="btn btn-primary btn-block" type="submit">Crear mi cuenta</button>
+      </form>
+
+    </div>
+  </div>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="/app/shared/api.js"></script>
+<script src="/app/shared/ui.js"></script>
+<script src="/app/acceso.js"></script>
+</body>
+</html>

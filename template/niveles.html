@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Niveles y Metodología | CCCN</title>
+<link rel="icon" type="image/svg+xml" href="assets/logo-mark.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600;1,9..144,700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+<style>
+.niv-hero {
+  padding: clamp(60px, 9vw, 100px) 0 clamp(40px, 5vw, 64px);
+  background: var(--cream);
+}
+
+/* CEFR ladder visual */
+.ladder {
+  display: grid; grid-template-columns: 60px 1fr; gap: 32px;
+}
+.ladder__axis {
+  position: relative;
+}
+.ladder__axis::before {
+  content: ""; position: absolute; left: 18px; top: 0; bottom: 0; width: 2px;
+  background: var(--line-strong);
+}
+.ladder__group { display: grid; gap: 32px; }
+.lgrp {
+  background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg);
+  padding: 32px; position: relative;
+}
+.lgrp__hdr { display: grid; grid-template-columns: 64px 1fr; gap: 20px; align-items: center; }
+.lgrp__cefr {
+  width: 64px; height: 64px; border-radius: 16px;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--font-sans); font-weight: 500; font-size: 28px;
+  letter-spacing: -.01em;
+}
+.lgrp-a .lgrp__cefr { background: #E6F4EA; color: #1F8A5B; }
+.lgrp-b .lgrp__cefr { background: #FFF4E0; color: #B07514; }
+.lgrp-c .lgrp__cefr { background: var(--cccn-red-100); color: var(--cccn-red); }
+
+.lgrp__name { font-family: var(--font-sans); font-weight: 500; font-size: 26px; color: var(--cccn-blue-900); margin: 0; }
+.lgrp__sub { color: var(--muted); font-size: 14px; }
+
+.lgrp__can {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px 24px;
+  margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--line);
+}
+.lgrp__can li {
+  list-style: none;
+  display: flex; gap: 10px; align-items: flex-start;
+  font-size: 14px; color: var(--ink-2);
+}
+.lgrp__can svg { color: var(--cccn-red); flex-shrink: 0; margin-top: 3px; }
+
+.lgrp__levels {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  margin-top: 24px;
+}
+.lgrp__levels .pill { background: var(--cccn-blue-100); color: var(--cccn-blue-700); }
+
+.axis-marker {
+  position: relative;
+  width: 38px; height: 38px;
+  background: #fff; border: 2px solid currentColor; border-radius: 999px;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--font-sans); font-weight: 600; font-size: 14px;
+  margin: 0 auto 220px;
+}
+.axis-block { text-align: center; color: var(--muted); }
+.axis-block + .axis-block { margin-top: 110px; }
+
+/* 4 skills grid */
+.skills { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+@media (max-width: 980px) { .skills { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .skills { grid-template-columns: 1fr; } }
+.skill {
+  border: 1px solid var(--line); border-radius: var(--r-lg);
+  padding: 28px; background: #fff;
+}
+.skill__icon {
+  width: 56px; height: 56px; border-radius: 14px;
+  background: var(--cccn-blue-100); color: var(--cccn-blue-700);
+  display: inline-flex; align-items: center; justify-content: center;
+  margin-bottom: 18px;
+}
+.skill h3 { font-family: var(--font-sans); font-weight: 500; font-size: 22px; color: var(--cccn-blue-900); margin: 0 0 8px; }
+.skill p { margin: 0; color: var(--muted); font-size: 14px; }
+</style>
+</head>
+<body>
+<div data-site-header></div>
+
+<section class="niv-hero">
+  <div class="container">
+    <nav class="small mb-3" style="color: var(--muted); display: flex; gap: 8px;">
+      <a href="index.html">Inicio</a><span>/</span><span style="color: var(--cccn-blue-900);">Niveles y metodología</span>
+    </nav>
+    <div class="grid-2 mt-3" style="align-items: end;">
+      <div>
+        <span class="h-eyebrow">Niveles · MCER</span>
+        <h1 class="h-display mt-2">Un camino claro <em>de A1 a C2</em>.</h1>
+      </div>
+      <p class="lede">Nuestro programa está alineado al Marco Común Europeo de Referencia para las Lenguas (MCER) — el estándar que usan universidades, empleadores y gobiernos en todo el mundo.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="ladder">
+      <div class="ladder__axis">
+        <div class="axis-block" style="color:#1F8A5B;"><div class="axis-marker">A</div><div class="small" style="font-weight:600;">Usuario<br/>básico</div></div>
+        <div class="axis-block" style="color:#B07514;"><div class="axis-marker">B</div><div class="small" style="font-weight:600;">Usuario<br/>independiente</div></div>
+        <div class="axis-block" style="color:var(--cccn-red);"><div class="axis-marker">C</div><div class="small" style="font-weight:600;">Usuario<br/>competente</div></div>
+      </div>
+
+      <div class="ladder__group">
+
+        <article class="lgrp lgrp-a">
+          <div class="lgrp__hdr">
+            <div class="lgrp__cefr">A1 – A2</div>
+            <div>
+              <h2 class="lgrp__name">Usuario básico</h2>
+              <span class="lgrp__sub">4 niveles · 16 a 24 semanas</span>
+            </div>
+          </div>
+          <ul class="lgrp__can">
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Presentarte y hablar de tu rutina diaria</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Describir tu familia, trabajo y entorno</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Comprender textos cortos y avisos</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Pedir comida, transporte, indicaciones</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Escribir mensajes y correos simples</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Manejar pasado, presente y futuro básico</li>
+          </ul>
+          <div class="lgrp__levels">
+            <span class="pill">Básico I</span><span class="pill">Básico II</span><span class="pill">Elemental I</span><span class="pill">Elemental II</span>
+          </div>
+        </article>
+
+        <article class="lgrp lgrp-b">
+          <div class="lgrp__hdr">
+            <div class="lgrp__cefr">B1 – B2</div>
+            <div>
+              <h2 class="lgrp__name">Usuario independiente</h2>
+              <span class="lgrp__sub">4 niveles · 16 a 24 semanas</span>
+            </div>
+          </div>
+          <ul class="lgrp__can">
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Sostener conversaciones largas con fluidez</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Defender opiniones y argumentar</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Trabajar en equipos internacionales</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Presentar ideas frente a una audiencia</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Comprender programas de TV y películas</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Redactar correos profesionales y reportes</li>
+          </ul>
+          <div class="lgrp__levels">
+            <span class="pill">Intermedio I</span><span class="pill">Intermedio II</span><span class="pill">Intermedio Alto I</span><span class="pill">Intermedio Alto II</span>
+          </div>
+        </article>
+
+        <article class="lgrp lgrp-c">
+          <div class="lgrp__hdr">
+            <div class="lgrp__cefr">C1 – C2</div>
+            <div>
+              <h2 class="lgrp__name">Usuario competente</h2>
+              <span class="lgrp__sub">4 niveles · 16 a 24 semanas</span>
+            </div>
+          </div>
+          <ul class="lgrp__can">
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Hablar con fluidez nativa en contextos formales</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Negociar y persuadir en inglés</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Estudiar carreras universitarias en inglés</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Escribir ensayos y artículos académicos</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Dominar modismos y referencias culturales</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Equiparar a un hablante nativo educado</li>
+          </ul>
+          <div class="lgrp__levels">
+            <span class="pill">Avanzado I</span><span class="pill">Avanzado II</span><span class="pill">Dominio I</span><span class="pill">Dominio II</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-cream">
+  <div class="container">
+    <div class="text-center" style="margin-bottom: 48px;">
+      <span class="h-eyebrow">Las 4 habilidades</span>
+      <h2 class="h-1 mt-2">En cada clase: <em>las cuatro</em>.</h2>
+      <p class="lede mt-3" style="margin-left:auto;margin-right:auto;">Aprender inglés no es memorizar. Es escuchar, hablar, leer y escribir — todos los días, desde el primer nivel.</p>
+    </div>
+
+    <div class="skills">
+      <article class="skill">
+        <div class="skill__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 12a9 9 0 0 1 18 0v6a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3M3 18v-3a2 2 0 0 1 2-2h3v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+        <h3>Listening</h3>
+        <p>Acentos americanos, británicos y globales. Podcasts, TED Talks, conversaciones reales.</p>
+      </article>
+      <article class="skill">
+        <div class="skill__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/></svg></div>
+        <h3>Speaking</h3>
+        <p>Pronunciación, conversación libre y simulaciones de entrevistas o reuniones.</p>
+      </article>
+      <article class="skill">
+        <div class="skill__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+        <h3>Reading</h3>
+        <p>Artículos, ficción graduada y textos profesionales. Vocabulario por temas.</p>
+      </article>
+      <article class="skill">
+        <div class="skill__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></div>
+        <h3>Writing</h3>
+        <p>Correos, ensayos, reportes y posts. Cada tarea recibe retroalimentación detallada.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="cta-banner" style="background: radial-gradient(ellipse at top right, rgba(200,16,46,.18), transparent 60%), var(--cccn-blue-900); color: #fff; border-radius: var(--r-xl); padding: clamp(40px, 6vw, 72px); display:grid; grid-template-columns:1.4fr 1fr; gap:40px; align-items:center;">
+      <div>
+        <span class="h-eyebrow" style="color:var(--cccn-red);">Ubicate</span>
+        <h2 class="h-1 mt-2" style="color:#fff;">¿Cuál es <em style="color: var(--cccn-red); font-weight: 700;">tu nivel</em>?</h2>
+        <p class="lede mt-3" style="color:#D8DEEE;">15 minutos. Resultado al instante. Sin costo.</p>
+      </div>
+      <div class="row" style="justify-content:flex-end;">
+        <a class="btn btn-primary" href="prueba-ubicacion.html">Hacer la prueba</a>
+        <a class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.4);" href="programa-adultos.html">Ver el programa</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+@media (max-width: 860px) {
+  .cta-banner { grid-template-columns: 1fr !important; }
+  .cta-banner .row { justify-content: flex-start !important; }
+}
+</style>
+
+<div data-site-footer></div>
+<script src="partials.js"></script>
+<script>CCCN.renderShell({ active: "niveles" });</script>
+</body>
+</html>
