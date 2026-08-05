@@ -18,17 +18,34 @@ from sqlalchemy import (
     JSON, Boolean, Column, DateTime, ForeignKey, Integer, MetaData, String,
     Table, Text, UniqueConstraint, create_engine, event, text,
 )
+from sqlalchemy.pool import NullPool
 
 from . import config
 
-engine = create_engine(
-    config.DATABASE_URL,
-    pool_pre_ping=True,
-    connect_args={"check_same_thread": False} if config.DATABASE_URL.startswith("sqlite") else {},
-)
+_IS_SQLITE = config.DATABASE_URL.startswith("sqlite")
+
+if _IS_SQLITE:
+    _engine_kwargs = {"connect_args": {"check_same_thread": False}}
+else:
+    _engine_kwargs = {
+        # Sin pool propio: la app corre serverless detrás del pooler de Supabase
+        # (Supavisor, puerto 6543), que YA es el pool. Mantener otro acá hace que cada
+        # instancia tibia retenga conexiones del pooler sin usarlas y se agote el cupo.
+        "poolclass": NullPool,
+        "connect_args": {
+            # El pooler en modo *transaction* no soporta prepared statements, y psycopg3
+            # los activa solo (prepare_threshold=5) DESPUÉS de repetir una consulta. Sin
+            # esto la app arranca bien y empieza a fallar sola al quinto login con
+            # "prepared statement already exists" — un fallo intermitente y difícil de
+            # rastrear justamente porque no aparece en las primeras pruebas.
+            "prepare_threshold": None,
+        },
+    }
+
+engine = create_engine(config.DATABASE_URL, pool_pre_ping=True, **_engine_kwargs)
 
 # SQLite necesita FKs activadas por conexión (en Postgres es no-op).
-if config.DATABASE_URL.startswith("sqlite"):
+if _IS_SQLITE:
     @event.listens_for(engine, "connect")
     def _sqlite_fk(dbapi_conn, _record):
         dbapi_conn.execute("PRAGMA foreign_keys=ON")
