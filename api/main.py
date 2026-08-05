@@ -72,4 +72,14 @@ def root():
 
 @app.on_event("startup")
 def _startup():
-    init_db()
+    # Solo en dev. Fuera de dev el esquema lo aplican las migraciones de Supabase
+    # (`supabase/migrations/`, ver docs/DEPLOY_VERCEL.md), no la app.
+    #
+    # No es una optimización: en Vercel cada arranque en frío es un proceso nuevo, así
+    # que init_db() correría DDL en cada invocación fría. Dos arranques simultáneos
+    # ejecutarían a la vez el `DROP TRIGGER` + `CREATE TRIGGER` de la bitácora, y en esa
+    # ventana audit_log queda sin su trigger append-only — justo la garantía que el
+    # Panorama Legal (Paso 6) exige que viva en la base. Además obliga a que el rol de
+    # la aplicación tenga permisos de DDL, que en beta/producción no debería tener.
+    if not config.IS_PROD:
+        init_db()

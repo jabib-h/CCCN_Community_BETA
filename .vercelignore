@@ -6,3 +6,8 @@ __pycache__/
 .env
 .env.*
 !.env.example
+
+# Herramientas y esquema: no se despliegan, la app no los importa en runtime.
+# supabase/ son las migraciones (se aplican con el CLI, no desde el servidor).
+supabase/
+tools/

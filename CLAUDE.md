@@ -19,6 +19,20 @@
 - PII nunca en superficies públicas. Menores: todo flujo nuevo respeta los gates de tutor.
 - Escape de HTML en todo lo que venga de la base (`ui.esc` en el frontend).
 
+**Esquema y base de datos:**
+- `api/db.py` es la ÚNICA fuente de verdad del esquema. Las migraciones de
+  `supabase/migrations/` son un artefacto derivado (`python -m tools.schema_sql`).
+- Un cambio de esquema son DOS cosas en el mismo commit: editar `api/db.py` **y** agregar
+  una migración incremental nueva. No se regenera la migración inicial — ya está aplicada
+  en bases reales. `schema_sql.py` solo sirve de referencia de cómo debe quedar.
+- **Toda tabla nueva necesita, en su migración**, las dos líneas que la cierran al Data API:
+  `ALTER TABLE x ENABLE ROW LEVEL SECURITY;` y `REVOKE ALL ON TABLE x FROM anon, authenticated;`
+  La clave `anon` de Supabase es pública; sin eso la tabla queda legible desde cualquier
+  navegador. La app se conecta como dueña y RLS no la afecta.
+- La app NO crea el esquema fuera de `dev`: `init_db()` solo corre si `not IS_PROD`
+  (ver el comentario en `api/main.py` — en serverless recrearía el trigger de la bitácora
+  en cada arranque en frío).
+
 **Frontend:**
 - La CSP no permite `unsafe-inline`: cero `<style>`, cero `style=""`, cero `<script>` embebido.
   Si necesitás un color dinámico, aplicalo por CSSOM desde un `.js`, no por atributo.
@@ -55,7 +69,17 @@
 
 ```bash
 python -m compileall -q api      # sintaxis
-python -m api.smoke_tests        # regresión completa
+python -m api.smoke_tests        # regresión completa (SQLite temporal)
+```
+
+Si tocaste el esquema, la base o algo específico de Postgres, `smoke_tests` **no alcanza**:
+corre siempre sobre SQLite y no ve los triggers, RLS ni permisos reales. Levantá el
+Postgres del CLI y verificá contra él:
+
+```bash
+npx supabase@latest start -x studio,inbucket,mailpit,imgproxy,edge-runtime,logflare,vector,supavisor,realtime,storage-api,pg-meta
+python -m tools.check_postgres   # esquema + Data API cerrado + bitácora inmutable
+npx supabase@latest stop
 ```
 
 ## Convenciones
